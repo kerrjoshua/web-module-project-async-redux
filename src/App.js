@@ -14,6 +14,25 @@ function App() {
       <section>
         <Form />
       </section>
+      <div className='recipe'>
+        <div className='row'>
+          <div className='left'>
+            <h2>Recipe title:</h2>
+            <div className='summary' name='summary'>
+              <p>This is a recipe for a delicious vegan or vegetarian dish. It will make you want to drool into your napkin when you smell the aroma of the dish as it cooks</p>
+            </div>
+          </div>
+          <div className='ingredients' name='ingredients'>
+            <h3>Ingredients:</h3>
+            <ul>
+              <li>first ingredient</li>
+              <li>second ingredient</li>
+              <li>etc.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }
