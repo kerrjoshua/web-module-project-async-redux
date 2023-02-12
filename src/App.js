@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Form from './components/Form'
 
 //Example Request and Response
 //GET https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
@@ -8,7 +9,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      Async Redux Project
+      <header><h1>Random Veggie Recipe App</h1>
+      </header>
+      <section>
+        <Form />
+      </section>
     </div>
   );
 }
