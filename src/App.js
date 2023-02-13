@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import './App.css';
 import Form from './components/Form'
-import Ingredients from './components/Ingredients';
+import Ingredients from './components/Ingredients'
+import Steps from './components/Steps'
 
 //Example Request and Response
 //GET https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
@@ -12,7 +13,7 @@ function App(props) {
 
   const { recipeData } = props;
   const summary = () => {
-    return {__html: recipeData.summary}
+    return { __html: recipeData.summary }
   }
 
 
@@ -36,13 +37,9 @@ function App(props) {
           </div>
         </div>
         <div className='bottomRow'>
-          
-        <div className='steps'>
-          {recipeData.analyzedInstructions[0].steps.map(stp => {
-            return (<p key={stp.number}><b>Step {stp.number}: </b>{stp.step}</p>)
-          })}
-          
-        </div>
+
+          <Steps />
+
         </div>
 
       </div>
