@@ -1,15 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import './App.css';
 import Form from './components/Form'
-import data from './resources/recipe'
+import Ingredients from './components/Ingredients';
 
 //Example Request and Response
 //GET https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
 // GET https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,dessert
 
-function App() {
+function App(props) {
 
-  const recipeData = data.recipes[0];
+  const { recipeData } = props;
   const summary = () => {
     return {__html: recipeData.summary}
   }
@@ -31,16 +32,7 @@ function App() {
             </div>
           </div>
           <div className='right'>
-            <div 
-              className='ingredients' 
-              name='ingredients'>
-              <h4>Ingredients:</h4>
-              <ul>
-                {recipeData.extendedIngredients.map(ing => {
-                 return  (<li key={ing.id}>{ing.name}</li>)
-                })}
-              </ul>
-            </div>
+            <Ingredients />
           </div>
         </div>
         <div className='bottomRow'>
@@ -58,4 +50,12 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    recipeData: state.recipeData,
+    loading: state.loading,
+    err: state.err
+  }
+}
+
+export default connect(mapStateToProps, {})(App);
