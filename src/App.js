@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import './App.css';
 import Form from './components/Form'
-import Ingredients from './components/Ingredients'
-import Steps from './components/Steps'
+import Recipe from './components/Recipe'
 
 //Example Request and Response
 //GET https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
@@ -11,42 +10,27 @@ import Steps from './components/Steps'
 
 function App(props) {
 
-  const { recipeData } = props;
-  const summary = () => {
-    return { __html: recipeData.summary }
-  }
+  const { recipeData, loading, err } = props;
 
 
   return (
+
+
     <div className="App">
-      <header><h1>Random Veggie Recipe App</h1>
-      </header>
-      <section>
-        <Form />
-      </section>
-      <div className='recipe'>
-        <div className='Row'>
-          <div className='left'>
-            <h2>{recipeData.title}</h2>
-            <div className='summary' name='summary'>
-              <p dangerouslySetInnerHTML={summary()}></p>
-            </div>
-          </div>
-          <div className='right'>
-            <Ingredients />
-          </div>
+          <header>
+            <h1>Random Veggie Recipe App</h1>
+          </header>
+          <section>
+            <Form />
+          </section>
+          
+      {loading ? <h3>Please hold...</h3> :
+        <div><Recipe />
         </div>
-        <div className='bottomRow'>
+      }</div>
 
-          <Steps />
-
-        </div>
-
-      </div>
-    </div>
-  );
+  )
 }
-
 const mapStateToProps = state => {
   return {
     recipeData: state.recipeData,
