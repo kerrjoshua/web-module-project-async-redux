@@ -57,35 +57,51 @@ h1 {
 	background-color: #98bae0;
 	border-radius: 5px;
 }
-
+/* --------------------------------------- */
 .recipe {
 	background-color: lemonchiffon;
 	border: 1px solid black;
 	border-radius: 2%;
 	width: 95%;
-	margin: auto;
+	margin: auto; 
 	display: flex;
-	height: 40vh;
+	flex-direction: column;
+	gap: 10px;
 
 }
 
-.summary{
+.summary, .steps{
 	border:1px solid black;
 	background-color: #ffffff;
-	overflow-wrap: anywhere;
+	width:90%;
+	margin: auto;
+	text-align: left;
+	padding: 5px;
+
 }
 
 .ingredients {
 	border: 1px solid black;
+	flex:1;
+	background-color: white;
+	flex-basis: 30px;
+	flex-grow: 0;
+	width: 90%;
+	padding: 5px;
 }
 
-.row {
+.Row {
 	display: flex;
-	align-items: flex-start;
-	overflow: hidden;
 }
 .left {
-	border:1px solid black;
-	max-width: 45%;
-	overflow: hidden;
+	flex: 2
+}
+.right{
+	display:flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+
+}
+li {
+	text-align: left;
 }
