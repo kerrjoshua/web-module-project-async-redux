@@ -1,12 +1,20 @@
 import React from 'react';
 import './App.css';
 import Form from './components/Form'
+import data from './resources/recipe'
 
 //Example Request and Response
 //GET https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
 // GET https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,dessert
 
 function App() {
+
+  const recipeData = data.recipes[0];
+  const summary = () => {
+    return {__html: recipeData.summary}
+  }
+
+
   return (
     <div className="App">
       <header><h1>Random Veggie Recipe App</h1>
@@ -17,9 +25,9 @@ function App() {
       <div className='recipe'>
         <div className='Row'>
           <div className='left'>
-            <h2>Recipe title:</h2>
+            <h2>{recipeData.title}</h2>
             <div className='summary' name='summary'>
-              <p>This is a recipe for a delicious vegan or vegetarian dish. It will make you want to drool into your napkin when you smell the aroma of the dish as it cooks</p>
+              <p dangerouslySetInnerHTML={summary()}></p>
             </div>
           </div>
           <div className='right'>
@@ -28,9 +36,9 @@ function App() {
               name='ingredients'>
               <h4>Ingredients:</h4>
               <ul>
-                <li>first ingredient</li>
-                <li>second ingredient</li>
-                <li>etc.</li>
+                {recipeData.extendedIngredients.map(ing => {
+                 return  (<li key={ing.id}>{ing.name}</li>)
+                })}
               </ul>
             </div>
           </div>
@@ -38,10 +46,10 @@ function App() {
         <div className='bottomRow'>
           
         <div className='steps'>
+          {recipeData.analyzedInstructions[0].steps.map(stp => {
+            return (<p key={stp.number}><b>Step {stp.number}: </b>{stp.step}</p>)
+          })}
           
-          <p><b>Step 1:</b>blaskjfoj dflajsd foasdofijsadl fjas dflaskd jflsdfli j</p>
-          <p><b>Step 2:</b>blaskjfoj dflajsd foasdofijsadl fjas dflaskd jflsdfli j</p>
-
         </div>
         </div>
 

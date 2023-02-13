@@ -1,4 +1,4 @@
-{
+const data = {
     "recipes": [
         {
             "vegetarian": true,
@@ -232,3 +232,5 @@
         }
     ]
 }
+
+export default data;
