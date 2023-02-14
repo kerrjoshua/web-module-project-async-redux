@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+
 import Ingredients from './Ingredients'
 import Steps from './Steps'
 
@@ -10,6 +11,8 @@ const Recipe = props => {
     const summary = () => {
       return { __html: recipeData.summary }
     }
+
+  
 
     return (
         <div className='recipe'>
