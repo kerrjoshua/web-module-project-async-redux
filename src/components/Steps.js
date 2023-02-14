@@ -5,7 +5,7 @@ const Steps = props => {
     const { recipeData } = props;
     return (
         <div className='steps'>
-            {recipeData.analyzedInstructions[0].steps.map(stp => {
+            {recipeData.analyzedInstructions && recipeData.analyzedInstructions[0].steps.map(stp => {
                 return (<p key={stp.number}><b>Step {stp.number}: </b>{stp.step}</p>)
             })}
     

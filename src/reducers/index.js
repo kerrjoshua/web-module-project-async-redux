@@ -18,7 +18,6 @@ const reducer = (state = initialState, action) => {
 
             }
         case FETCH_RECIPE_SUCCESS:
-            console.log('entered fetch...success', action.payload)
             return {
                 ...state,
                 loading: false,
